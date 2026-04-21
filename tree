@@ -1,0 +1,35 @@
+contact-net-wm/
+├── config/
+│   ├── train/
+│   │   ├── data/
+│   │   │   ├── contact_net.yaml      # 新增：接触网数据集配置
+│   │   │   └── custom_dataset.yaml   # 通用数据集配置
+│   │   ├── launcher/
+│   │   │   └── local.yaml
+│   │   └── lewm_ijepa.yaml           # 整合后的训练配置
+│   └── eval/
+│       ├── launcher/
+│       │   └── local.yaml
+│       └── diagnosis.yaml            # 诊断评估配置
+├── data/
+│   ├── __init__.py
+│   ├── contact_net_dataset.py        # 新增：接触网数据集加载器
+│   ├── transforms.py                 # 数据增强和预处理
+│   └── utils.py                      # 数据工具函数
+├── models/
+│   ├── __init__.py
+│   ├── encoder.py                    # I-JEPA风格的ViT编码器
+│   ├── predictor.py                  # LeWM风格的时序预测器
+│   ├── jepa_combined.py             # 整合的JEPA模型
+│   └── diagnosis_head.py            # 故障诊断头
+├── training/
+│   ├── __init__.py
+│   ├── trainer.py                    # 训练循环
+│   └── losses.py                     # 损失函数
+├── evaluation/
+│   ├── __init__.py
+│   └── diagnosis_eval.py            # 诊断评估
+├── train.py                          # 训练入口
+├── eval.py                           # 评估入口
+├── requirements.txt
+└── README.md

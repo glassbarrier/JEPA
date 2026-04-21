@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+data/*.h5
+output/*
+ijepa/
+le-wm-test/
