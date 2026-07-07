@@ -1,0 +1,2 @@
+# 基于 ijepa/configs/in1k_vith14_ep300.yaml 修改
+# 修改：更改数据路径、batch_size、epochs等参数

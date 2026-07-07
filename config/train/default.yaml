@@ -1,0 +1,61 @@
+# 基于 le-wm-test/config/train/lewm.yaml + I-JEPA配置合并
+# 合并：结合两者的优化器、模型参数配置
+
+meta:
+  model_name: vit_base
+  load_checkpoint: false
+  read_checkpoint: null
+  copy_data: false
+  pred_depth: 6
+  pred_emb_dim: 384
+  use_bfloat16: false
+
+data:
+  root_path: "./data/contact_net_images" # 修改为你的数据路径
+  image_folder: "train"
+  batch_size: 64
+  pin_mem: true
+  num_workers: 4
+  crop_size: 224
+  crop_scale: [0.2, 1.0]
+  use_gaussian_blur: false
+  use_horizontal_flip: true
+  use_color_distortion: false
+  color_jitter_strength: 0.0
+
+mask:
+  patch_size: 16
+  num_enc_masks: 1
+  num_pred_masks: 2
+  min_keep: 4
+  enc_mask_scale: [0.2, 0.8]
+  pred_mask_scale: [0.2, 0.8]
+  aspect_ratio: [0.3, 3.0]
+  allow_overlap: false
+
+optimization:
+  epochs: 100
+  warmup: 10
+  start_lr: 0.0001
+  lr: 0.001
+  final_lr: 0.0001
+  weight_decay: 0.04
+  final_weight_decay: 0.4
+  ema: [0.996, 0.999] # Start and End EMA momentum
+  ipe_scale: 1.0
+
+logging:
+  folder: "./output/logs"
+  write_tag: "contact_net_jepa"
+  freq: 10
+
+checkpoint:
+  save_freq: 10
+
+model:
+  embed_dim: 768
+  enc_depth: 12
+  pred_depth: 6
+  num_heads: 12
+  num_classes: 5 # For diagnosis head
+  use_sigreg: true
