@@ -17,13 +17,16 @@ pip install -r requirements_quick.txt
 **使用方法**:
 ```bash
 # 提取所有数据特征
-python quick_feature_extractor.py --data_root ./data --output_dir ./features --model_type dinov2_small --split all
+python quick_feature_extractor.py --data_root ~/UCAD/mvtec2d --output_dir ./features --model_type dinov2_small --split all
 
 # 仅提取训练集
-python quick_feature_extractor.py --data_root ./data --output_dir ./features --model_type dinov2_small --split train
+python quick_feature_extractor.py --data_root ~/UCAD/mvtec2d --output_dir ./features --model_type dinov2_small --split train
 
 # 仅提取测试集
-python quick_feature_extractor.py --data_root ./data --output_dir ./features --model_type dinov2_small --split test
+python quick_feature_extractor.py --data_root ~/UCAD/mvtec2d --output_dir ./features --model_type dinov2_small --split test
+
+# 仅处理单个类别
+python quick_feature_extractor.py --data_root ~/UCAD/mvtec2d --output_dir ./features --model_type dinov2_small --split all --category locator_tube_connector
 ```
 
 ### 2. ResNet50 Pretrained
@@ -35,7 +38,11 @@ python quick_feature_extractor.py --data_root ./data --output_dir ./features --m
 
 **使用方法**:
 ```bash
-python quick_feature_extractor.py --data_root ./data --output_dir ./features --model_type resnet50 --split all
+# 提取所有数据特征
+python quick_feature_extractor.py --data_root ~/UCAD/mvtec2d --output_dir ./features --model_type resnet50 --split all
+
+# 仅处理单个类别
+python quick_feature_extractor.py --data_root ~/UCAD/mvtec2d --output_dir ./features --model_type resnet50 --split all --category locator_tube_connector
 ```
 
 ### 3. CLIP ViT-B/32
@@ -47,7 +54,7 @@ python quick_feature_extractor.py --data_root ./data --output_dir ./features --m
 **使用方法**:
 ```bash
 pip install git+https://github.com/openai/CLIP.git
-python quick_feature_extractor.py --data_root ./data --output_dir ./features --model_type clip_vit --split all
+python quick_feature_extractor.py --data_root ~/UCAD/mvtec2d --output_dir ./features --model_type clip_vit --split all
 ```
 
 ### 4. DINOv2-Base/Large
@@ -59,10 +66,33 @@ python quick_feature_extractor.py --data_root ./data --output_dir ./features --m
 **使用方法**:
 ```bash
 # Base版本
-python quick_feature_extractor.py --data_root ./data --output_dir ./features --model_type dinov2_base --split all
+python quick_feature_extractor.py --data_root ~/UCAD/mvtec2d --output_dir ./features --model_type dinov2_base --split all
 
 # Large版本
-python quick_feature_extractor.py --data_root ./data --output_dir ./features --model_type dinov2_large --split all
+python quick_feature_extractor.py --data_root ~/UCAD/mvtec2d --output_dir ./features --model_type dinov2_large --split all
+```
+
+## 数据结构
+
+数据集遵循三层目录结构：
+```
+~/UCAD/mvtec2d/
+├── locator_tube_connector/
+│   ├── train/good/              # 正常训练样本
+│   ├── test/good/               # 正常测试样本
+│   ├── test/crack_ltc/          # 异常测试样本
+│   └── ground_truth/crack_ltc/  # 异常掩码
+├── insulator/
+│   ├── train/good/
+│   ├── test/good/
+│   ├── test/drop/
+│   └── ground_truth/drop/
+├── sleeve_loose/
+│   ├── train/good/
+│   ├── test/good/
+│   ├── test/loose/
+│   └── ground_truth/loose/
+└── ... (其他类别)
 ```
 
 ## 输出格式
@@ -71,11 +101,14 @@ python quick_feature_extractor.py --data_root ./data --output_dir ./features --m
 
 ```
 features/
-├── train_normal_features.npy  # 训练集正常样本特征
-├── train_normal_paths.npy     # 训练集样本路径
-├── test_features.npy          # 测试集所有样本特征
-├── test_labels.npy            # 测试集标签 (0=正常, 1=异常)
-└── test_paths.npy             # 测试集样本路径
+├── train_features.npy           # 训练集正常样本特征
+├── train_paths.npy              # 训练集样本路径
+├── train_categories.npy         # 训练集样本所属类别
+├── test_features.npy            # 测试集所有样本特征
+├── test_labels.npy              # 测试集标签 (0=正常, 1=异常)
+├── test_paths.npy               # 测试集样本路径
+├── test_categories.npy          # 测试集样本所属类别
+└── test_defect_types.npy        # 测试集异常类型
 ```
 
 ## 后续使用示例
@@ -85,26 +118,35 @@ import numpy as np
 from sklearn.svm import OneClassSVM
 
 # 加载特征
-train_features = np.load('./features/train_normal_features.npy')
+train_features = np.load('./features/train_features.npy')
 test_features = np.load('./features/test_features.npy')
 test_labels = np.load('./features/test_labels.npy')
+test_categories = np.load('./features/test_categories.npy', allow_pickle=True)
+test_defect_types = np.load('./features/test_defect_types.npy', allow_pickle=True)
 
-# 训练异常检测模型
-model = OneClassSVM(nu=0.05, kernel='rbf', gamma='scale')
-model.fit(train_features)
-
-# 预测
-predictions = model.predict(test_features)
-
-# 评估
-from sklearn.metrics import roc_auc_score, accuracy_score
-test_binary = (test_labels == 1).astype(int)  # 转换为二分类
-pred_binary = (predictions == -1).astype(int)  # -1表示异常
-
-auc = roc_auc_score(test_binary, -model.score_samples(test_features))
-acc = accuracy_score(test_binary, pred_binary)
-
-print(f"AUC: {auc:.4f}, Accuracy: {acc:.4f}")
+# 按类别评估
+for category in np.unique(test_categories):
+    # 获取该类别的测试数据
+    category_mask = test_categories == category
+    category_features = test_features[category_mask]
+    category_labels = test_labels[category_mask]
+    
+    # 训练该类别的异常检测模型
+    model = OneClassSVM(nu=0.05, kernel='rbf', gamma='scale')
+    model.fit(train_features)  # 使用所有训练数据
+    
+    # 预测
+    predictions = model.predict(category_features)
+    
+    # 评估
+    from sklearn.metrics import roc_auc_score, accuracy_score
+    test_binary = (category_labels == 1).astype(int)  # 转换为二分类
+    pred_binary = (predictions == -1).astype(int)  # -1表示异常
+    
+    if len(np.unique(test_binary)) > 1:  # 确保有正负样本
+        auc = roc_auc_score(test_binary, -model.score_samples(category_features))
+        acc = accuracy_score(test_binary, pred_binary)
+        print(f"{category}: AUC={auc:.4f}, Acc={acc:.4f}")
 ```
 
 ## 硬件要求

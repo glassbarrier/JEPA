@@ -172,79 +172,126 @@ class QuickFeatureExtractor:
         return np.array(all_features), all_paths
 
 
-def process_dataset(data_root, output_dir, model_type='dinov2_small', split='train'):
+def process_dataset(data_root, output_dir, model_type='dinov2_small', split='train', category=None):
     extractor = QuickFeatureExtractor(model_type=model_type)
     
-    data_root = Path(data_root)
+    data_root = Path(data_root).expanduser()
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    if split == 'train':
-        image_dir = data_root / 'train' / 'good'
-        split_name = 'train_normal'
-    elif split == 'test':
-        image_dir = data_root / 'test' / 'good'
-        split_name = 'test_normal'
+    print(f"Data root: {data_root}")
+    print(f"Processing split: {split}")
+    
+    if category:
+        # 处理单个类别
+        categories = [category]
     else:
-        # Process all test categories
-        test_dir = data_root / 'test'
+        # 获取所有类别目录
+        categories = sorted([d for d in data_root.iterdir() if d.is_dir()])
+        print(f"Found {len(categories)} categories: {[c.name for c in categories]}")
+    
+    if split == 'train':
+        # 处理训练集（仅正常样本）
         all_features = []
         all_paths = []
-        all_labels = []
+        all_categories = []
         
-        for category_dir in sorted(test_dir.iterdir()):
-            if not category_dir.is_dir():
+        for category_dir in categories:
+            category_name = category_dir.name
+            image_dir = category_dir / 'train' / 'good'
+            
+            if not image_dir.exists():
+                print(f"Warning: {image_dir} does not exist, skipping")
                 continue
             
-            category_name = category_dir.name
-            label = 0 if category_name == 'good' else 1
-            
-            print(f"Processing {category_name}...")
-            image_paths = list(category_dir.glob('*.png')) + list(category_dir.glob('*.jpg'))
+            print(f"Processing {category_name}/train/good...")
+            image_paths = list(image_dir.glob('*.png')) + list(image_dir.glob('*.jpg'))
             
             if not image_paths:
-                print(f"No images found in {category_dir}")
+                print(f"No images found in {image_dir}")
                 continue
             
             features, paths = extractor.extract_features_batch(image_paths)
             all_features.extend(features)
             all_paths.extend(paths)
-            all_labels.extend([label] * len(features))
+            all_categories.extend([category_name] * len(features))
         
-        # Save all test features
-        features_array = np.array(all_features)
-        labels_array = np.array(all_labels)
-        
-        np.save(output_dir / 'test_features.npy', features_array)
-        np.save(output_dir / 'test_labels.npy', labels_array)
-        np.save(output_dir / 'test_paths.npy', np.array(all_paths, dtype=object))
-        
-        print(f"Saved {len(features_array)} test features to {output_dir}")
-        return
+        if all_features:
+            features_array = np.array(all_features)
+            np.save(output_dir / 'train_features.npy', features_array)
+            np.save(output_dir / 'train_paths.npy', np.array(all_paths, dtype=object))
+            np.save(output_dir / 'train_categories.npy', np.array(all_categories, dtype=object))
+            print(f"Saved {len(features_array)} training features to {output_dir}")
+        else:
+            print("No training features extracted!")
     
-    if split == 'train' or split == 'test':
-        if not image_dir.exists():
-            print(f"Image directory {image_dir} does not exist")
-            return
+    elif split == 'test':
+        # 处理测试集（正常和异常样本）
+        all_features = []
+        all_paths = []
+        all_labels = []
+        all_categories = []
+        all_defect_types = []
         
-        image_paths = list(image_dir.glob('*.png')) + list(image_dir.glob('*.jpg'))
-        print(f"Found {len(image_paths)} images in {image_dir}")
+        for category_dir in categories:
+            category_name = category_dir.name
+            test_dir = category_dir / 'test'
+            
+            if not test_dir.exists():
+                print(f"Warning: {test_dir} does not exist, skipping")
+                continue
+            
+            # 处理正常样本
+            normal_dir = test_dir / 'good'
+            if normal_dir.exists():
+                print(f"Processing {category_name}/test/good...")
+                normal_paths = list(normal_dir.glob('*.png')) + list(normal_dir.glob('*.jpg'))
+                
+                if normal_paths:
+                    features, paths = extractor.extract_features_batch(normal_paths)
+                    all_features.extend(features)
+                    all_paths.extend(paths)
+                    all_labels.extend([0] * len(features))  # 0 = normal
+                    all_categories.extend([category_name] * len(features))
+                    all_defect_types.extend(['good'] * len(features))
+            
+            # 处理异常样本
+            defect_dirs = [d for d in test_dir.iterdir() if d.is_dir() and d.name != 'good']
+            for defect_dir in sorted(defect_dirs):
+                defect_type = defect_dir.name
+                print(f"Processing {category_name}/test/{defect_type}...")
+                defect_paths = list(defect_dir.glob('*.png')) + list(defect_dir.glob('*.jpg'))
+                
+                if defect_paths:
+                    features, paths = extractor.extract_features_batch(defect_paths)
+                    all_features.extend(features)
+                    all_paths.extend(paths)
+                    all_labels.extend([1] * len(features))  # 1 = anomalous
+                    all_categories.extend([category_name] * len(features))
+                    all_defect_types.extend([defect_type] * len(features))
         
-        if not image_paths:
-            print("No images found!")
-            return
-        
-        features, paths = extractor.extract_features_batch(image_paths)
-        
-        np.save(output_dir / f'{split_name}_features.npy', features)
-        np.save(output_dir / f'{split_name}_paths.npy', np.array(paths, dtype=object))
-        
-        print(f"Saved {len(features)} features to {output_dir}")
+        if all_features:
+            features_array = np.array(all_features)
+            labels_array = np.array(all_labels)
+            
+            np.save(output_dir / 'test_features.npy', features_array)
+            np.save(output_dir / 'test_labels.npy', labels_array)
+            np.save(output_dir / 'test_paths.npy', np.array(all_paths, dtype=object))
+            np.save(output_dir / 'test_categories.npy', np.array(all_categories, dtype=object))
+            np.save(output_dir / 'test_defect_types.npy', np.array(all_defect_types, dtype=object))
+            
+            normal_count = np.sum(labels_array == 0)
+            anomalous_count = np.sum(labels_array == 1)
+            print(f"Saved {len(features_array)} test features to {output_dir}")
+            print(f"  Normal samples: {normal_count}")
+            print(f"  Anomalous samples: {anomalous_count}")
+        else:
+            print("No test features extracted!")
 
 
 def main():
     parser = argparse.ArgumentParser(description='Quick feature extraction for anomaly detection')
-    parser.add_argument('--data_root', type=str, default='./data', help='Data root directory')
+    parser.add_argument('--data_root', type=str, default='~/UCAD/mvtec2d', help='Data root directory')
     parser.add_argument('--output_dir', type=str, default='./features', help='Output directory for features')
     parser.add_argument('--model_type', type=str, default='dinov2_small', 
                        choices=['dinov2_small', 'dinov2_base', 'dinov2_large', 'resnet50', 'clip_vit'],
@@ -252,15 +299,17 @@ def main():
     parser.add_argument('--split', type=str, default='all', 
                        choices=['train', 'test', 'all'],
                        help='Data split to process')
+    parser.add_argument('--category', type=str, default=None, 
+                       help='Specific category to process (e.g., locator_tube_connector)')
     
     args = parser.parse_args()
     
     if args.split == 'all':
         print("Processing all splits...")
-        process_dataset(args.data_root, args.output_dir, args.model_type, 'train')
-        process_dataset(args.data_root, args.output_dir, args.model_type, 'test')
+        process_dataset(args.data_root, args.output_dir, args.model_type, 'train', args.category)
+        process_dataset(args.data_root, args.output_dir, args.model_type, 'test', args.category)
     else:
-        process_dataset(args.data_root, args.output_dir, args.model_type, args.split)
+        process_dataset(args.data_root, args.output_dir, args.model_type, args.split, args.category)
 
 
 if __name__ == '__main__':
