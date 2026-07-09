@@ -124,7 +124,8 @@ class QuickFeatureExtractor:
     def extract_features_batch(self, image_paths, batch_size=32):
         all_features = []
         all_paths = []
-        
+        # batchsize = 32,后面tqdm 进度条显示的是批次数不是图片数
+
         for i in tqdm(range(0, len(image_paths), batch_size), desc="Extracting features"):
             batch_paths = image_paths[i:i+batch_size]
             batch_images = []
@@ -184,7 +185,7 @@ def process_dataset(data_root, output_dir, model_type='dinov2_small', split='tra
     
     if category:
         # 处理单个类别
-        categories = [category]
+        categories = [data_root / category]
     else:
         # 获取所有类别目录
         categories = sorted([d for d in data_root.iterdir() if d.is_dir()])
