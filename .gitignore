@@ -111,3 +111,11 @@ tmp/
 temp/
 temp_files/
 
+# remote
+features/
+ijepa/
+config/
+data/
+evaluation/
+models/
+training/
