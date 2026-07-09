@@ -58,13 +58,12 @@ datasets/
 *.pickle
 
 # Exclude actual data folders but keep source code
-!ijepa/src/
-!ijepa/configs/
-!ijepa/validate_dataset.py
-!ijepa/run_training.sh
-!ijepa/run_training.bat
-!ijepa/README_SERVER.md
-!ijepa/HYBRID_IJEPA_LEWM_README.md
+!src/
+!configs/
+!scripts/
+!docs/
+!main.py
+!requirements.txt
 
 # Training outputs
 checkpoints/

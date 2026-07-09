@@ -1,0 +1,53 @@
+# Hybrid IJEPA-LeWM Configuration
+# This configuration enables single-GPU training with LeWM innovations
+
+# Meta parameters
+meta:
+  model_name: "hybrid_ijepa_lewm"
+  use_bfloat16: true  # Mixed precision training (LeWM style)
+  pred_depth: 6       # Predictor depth (LeWM style)
+  pred_emb_dim: 192   # Embedding dimension
+  load_checkpoint: false
+  read_checkpoint: null
+  copy_data: false
+
+# Data parameters
+data:
+  batch_size: 64      # Reduced for single GPU
+  root_path: "/path/to/imagenet"
+  image_folder: "train"
+  crop_size: 224
+  crop_scale: 0.08
+  use_gaussian_blur: true
+  use_horizontal_flip: true
+  use_color_distortion: true
+  color_jitter_strength: 0.5
+  pin_mem: true
+  num_workers: 4
+
+# Mask parameters (simplified from IJEPA)
+mask:
+  patch_size: 16
+  num_enc_masks: 1    # Number of context blocks
+  num_pred_masks: 4   # Number of target blocks
+  enc_mask_scale: 0.4  # Context block scale
+  pred_mask_scale: 0.6 # Target block scale
+  aspect_ratio: 1.0
+  allow_overlap: false
+  min_keep: 16
+
+# Optimization parameters (LeWM style)
+optimization:
+  epochs: 100
+  lr: 1e-4
+  final_lr: 1e-5
+  weight_decay: 0.05
+  final_weight_decay: 0.05
+  warmup: 1000
+  ipe_scale: 1.0
+  ema: [0.996, 0.999]  # Exponential moving average (disabled in hybrid mode)
+  
+# Logging parameters
+logging:
+  folder: "./checkpoints/hybrid_training"
+  write_tag: "hybrid"

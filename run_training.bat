@@ -119,10 +119,10 @@ goto :eof
 :validate_dataset
 call :print_info "验证数据集..."
 
-if exist "validate_dataset.py" (
-    python validate_dataset.py
+if exist "main.py" (
+    python main.py --mode validate --data ./data
 ) else (
-    call :print_warning "数据集验证脚本不存在，跳过验证"
+    call :print_warning "主程序不存在，跳过验证"
 )
 goto :eof
 
@@ -146,13 +146,12 @@ call :print_info "  训练轮数: %epochs%"
 call :print_info "  学习率: %lr%"
 
 :: 运行训练
-python src\train_hybrid.py ^
+python main.py --mode train ^
     --batch_size %batch_size% ^
     --epochs %epochs% ^
     --lr %lr% ^
-    --data_root ./data ^
+    --data ./data ^
     --output_dir ./checkpoints ^
-    --log_dir ./logs ^
     --config configs\train\industrial_detection.yaml
 
 goto :eof

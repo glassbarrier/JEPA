@@ -1,0 +1,103 @@
+# IJEPA-LeWM Training Configuration
+# 工业检测模型训练配置
+
+# 数据配置
+data:
+  root_path: "./data"           # 数据集根目录
+  batch_size: 16                # 批量大小（根据GPU内存调整）
+  num_workers: 4                 # 数据加载线程数
+  crop_size: 224                # 图像裁剪大小
+  crop_scale: 0.08              # 随机裁剪比例
+  use_gaussian_blur: true       # 使用高斯模糊
+  use_horizontal_flip: true     # 使用水平翻转
+  use_color_distortion: true     # 使用颜色扭曲
+  color_jitter_strength: 0.5    # 颜色扭曲强度
+  pin_mem: true                 # 固定内存
+
+# 模型配置
+model:
+  encoder: "vit_tiny"            # 编码器类型
+  embed_dim: 192                # 嵌入维度
+  pred_dim: 192                 # 预测维度
+  depth: 6                      # 预测器深度
+  heads: 16                     # 注意力头数
+  mlp_dim: 2048                 # MLP维度
+  dropout: 0.1                  # Dropout率
+  cls_token: true               # 使用CLS token
+
+# 训练配置
+training:
+  epochs: 100                   # 训练轮数
+  lr: 1e-4                      # 学习率
+  weight_decay: 0.05            # 权重衰减
+  bfloat16: true                # 混合精度训练
+  gradient_clip: 1.0           # 梯度裁剪
+  warmup_epochs: 10             # 预热轮数
+  lr_scheduler: "cosine"        # 学习率调度器
+  save_every: 10               # 保存间隔
+
+# 掩码配置
+mask:
+  patch_size: 16                # ViT patch大小
+  num_enc_masks: 1              # 上下文掩码数量
+  num_pred_masks: 4            # 目标掩码数量
+  enc_mask_scale: 0.4           # 上下文掩码比例
+  pred_mask_scale: 0.6          # 目标掩码比例
+  aspect_ratio: 1.0             # 掩码长宽比
+  allow_overlap: false           # 允许掩码重叠
+
+# SIGReg配置
+sigreg:
+  use_sigreg: true              # 使用SIGReg
+  sigreg_weight: 0.09           # SIGReg权重
+  sigreg_temperature: 0.1       # SIGReg温度
+  sigreg_momentum: 0.995        # SIGReg动量
+
+# 优化配置
+optimizer:
+  type: "adamw"                 # 优化器类型
+  betas: [0.9, 0.95]            # AdamW参数
+  eps: 1e-8                     # 数值稳定项
+
+# 输出配置
+output:
+  save_dir: "./checkpoints"      # 模型保存目录
+  log_dir: "./logs"             # 日志保存目录
+  tensorboard: true             # 是否使用TensorBoard
+
+# 硬件配置
+hardware:
+  device: "cuda"                # 使用的设备
+  gpu_memory: 8                 # GPU内存限制(GB)
+  mixed_precision: true         # 混合精度训练
+  gradient_checkpointing: true  # 梯度检查点
+
+# 数据集信息（自动生成）
+dataset_info:
+  total_categories: 12           # 总类别数
+  total_samples: 5000           # 总样本数
+  num_classes: 20               # 总类别数
+  categories:                   # 类别列表
+    - locator_tube_connector
+    - insulator
+    - sleeve_loose
+    - insulator_SAM
+    - ear_croped
+    - connector_sleeve
+    - casing_base
+    - locator_base
+    - sleeve_loose_global
+    - sleeve_double_ear_crack
+    - base_back_croped1
+    - screw_clamp
+  classes:                      # 所有类别
+    - good
+    - crack
+    - drop
+    - loose
+    - crack_cs
+    - crack_cb
+    - crack_lb
+    - loose_sdr
+    - crack_sdr
+    - missing

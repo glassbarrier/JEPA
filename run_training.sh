@@ -105,8 +105,8 @@ create_directories() {
 validate_dataset() {
     print_info "验证数据集..."
     
-    if [ -f "validate_dataset.py" ]; then
-        python3 validate_dataset.py
+    if [ -f "scripts/validate_dataset.py" ]; then
+        python3 main.py --mode validate --data ./data
     else
         print_warning "数据集验证脚本不存在，跳过验证"
     fi
@@ -126,15 +126,14 @@ train_model() {
     print_info "  训练轮数: $epochs"
     print_info "  学习率: $lr"
     
-    # 运行训练
-    python3 src/train_hybrid.py \
-        --batch_size $batch_size \
-        --epochs $epochs \
-        --lr $lr \
-        --data_root ./data \
-        --output_dir ./checkpoints \
-        --log_dir ./logs \
-        --config configs/train/industrial_detection.yaml
+# 运行训练
+python3 main.py --mode train \
+    --batch_size $batch_size \
+    --epochs $epochs \
+    --lr $lr \
+    --data_root ./data \
+    --output_dir ./checkpoints \
+    --config configs/train/industrial_detection.yaml
 }
 
 # 评估函数
