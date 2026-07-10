@@ -140,7 +140,8 @@ class MultiCategoryJEPADataLoader:
                  use_horizontal_flip: bool = True,
                  use_color_distortion: bool = True,
                  color_jitter_strength: float = 0.5,
-                 pin_memory: bool = True):
+                 pin_memory: bool = True,
+                 collator=None):
         """
         Args:
             root_dir: Root directory of the dataset
@@ -156,6 +157,7 @@ class MultiCategoryJEPADataLoader:
             use_color_distortion: Whether to use color distortion
             color_jitter_strength: Strength of color jitter
             pin_memory: Whether to pin memory
+            collator: Optional collator function for batching
         """
         self.root_dir = root_dir
         self.batch_size = batch_size
@@ -165,6 +167,7 @@ class MultiCategoryJEPADataLoader:
         self.crop_size = crop_size
         self.crop_scale = crop_scale
         self.pin_memory = pin_memory
+        self.collator = collator
         
         # Create transforms
         self.transform = self._create_transforms()
@@ -370,7 +373,6 @@ if __name__ == "__main__":
     # Create data loader
     print("\nCreating data loader...")
     data_loader = MultiCategoryJEPADataLoader(
-        collate_fn=collator,
         root_dir=root_dir,
         categories=None,  # Use all categories
         batch_size=16,

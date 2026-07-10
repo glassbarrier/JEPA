@@ -238,26 +238,40 @@ class HybridJEPA(nn.Module):
     def encode(self, info: Dict[str, Any], use_cls_token: bool = True):
         """Encode observations and optionally actions into embeddings"""
         pixels = info['pixels'].float()
+        
+        # Ensure input shape is (B, C, H, W)
+        if pixels.dim() == 3:  # (B, H, W, C) or (B, C, H, W) but missing batch dim?
+            if pixels.size(1) == 3 and pixels.size(2) > pixels.size(3):  # (B, C, H, W)
+                pass  # already correct
+            elif pixels.size(1) > pixels.size(2):  # (B, H, W, C)
+                pixels = pixels.permute(0, 3, 1, 2)  # (B, C, H, W)
+            else:  # (B, C, H) - add W dimension
+                pixels = pixels.unsqueeze(-1).expand(-1, -1, -1, 224)  # assume 224x224
+        elif pixels.dim() == 2:  # (B, C*H*W) - reshape
+            B = pixels.size(0)
+            pixels = pixels.view(B, 3, 224, 224)  # assume 224x224 RGB
+        elif pixels.dim() == 4:
+            pass  # already correct shape (B, C, H, W)
+        else:
+            raise ValueError(f"Unexpected input shape: {pixels.shape}")
+        
         b = pixels.size(0)
         
-        # Flatten batch and time dimensions
-        pixels = rearrange(pixels, "b t ... -> (b t) ...")
-        
-        # Encode with Vision Transformer
+        # Encode with Vision Transformer (single image processing)
         output = self.encoder(pixels)
         
         if use_cls_token:
             # Use CLS token only (LeWM style)
-            pixels_emb = output.last_hidden_state[:, 0]
+            pixels_emb = output[:, 0]
         else:
             # Use mean pooling (IJEPA style)
-            pixels_emb = output.last_hidden_state.mean(dim=1)
+            pixels_emb = output.mean(dim=1)
         
         # Project to embedding dimension
         emb = self.projector(pixels_emb)
         
-        # Reshape back to (B, T, D)
-        info["emb"] = rearrange(emb, "(b t) d -> b t d", b=b)
+        # For single image processing, keep as (B, D) instead of (B, T, D)
+        info["emb"] = emb.unsqueeze(1) if emb.dim() == 2 else emb
         
         # Encode actions if available
         if self.action_encoder is not None and "action" in info:
@@ -274,9 +288,11 @@ class HybridJEPA(nn.Module):
             # IJEPA-style prediction without actions
             preds = self.predictor(emb)
         
-        # Apply projection if needed
-        preds = self.pred_proj(rearrange(preds, "b t d -> (b t) d"))
-        preds = rearrange(preds, "(b t) d -> b t d", b=emb.size(0))
+        # For single image processing, handle shape accordingly
+        if preds.dim() == 3:  # (B, T, D)
+            preds = self.pred_proj(preds)
+        else:  # (B, D)
+            preds = self.pred_proj(preds).unsqueeze(1)
         
         return preds
 
@@ -338,22 +354,39 @@ class HybridJEPA(nn.Module):
 
     def criterion(self, info_dict: Dict[str, Any]) -> Dict[str, torch.Tensor]:
         """Compute hybrid loss combining IJEPA and LeWM approaches"""
-        pred_emb = info_dict["predicted_emb"]  # (B,S,T-1,dim)
-        goal_emb = info_dict["goal_emb"]  # (B,S,T,dim)
+        pred_emb = info_dict["predicted_emb"]
+        goal_emb = info_dict["goal_emb"]
         
         # LeWM-style prediction loss
-        goal_emb = goal_emb[..., -1:, :].expand_as(pred_emb)
-        pred_loss = F.mse_loss(
-            pred_emb[..., -1:, :],
-            goal_emb[..., -1:, :].detach(),
-            reduction="none"
-        ).sum(dim=tuple(range(2, pred_emb.ndim)))  # (B,S)
+        # For single image processing, both are (B, D) or (B, 1, D)
+        if pred_emb.dim() == 3 and goal_emb.dim() == 3:
+            # Both have time dimension
+            pred_loss = F.mse_loss(
+                pred_emb,
+                goal_emb.detach(),
+                reduction="none"
+            ).sum(dim=tuple(range(2, pred_emb.ndim)))
+        else:
+            # Single image processing, no time dimension
+            pred_loss = F.mse_loss(
+                pred_emb,
+                goal_emb.detach(),
+                reduction="none"
+            )
+            if pred_loss.dim() > 1:
+                pred_loss = pred_loss.sum(dim=tuple(range(1, pred_loss.ndim)))
         
         loss_dict = {"pred_loss": pred_loss.mean()}
         
         # Add SIGReg if enabled
         if self.use_sigreg and "emb" in info_dict:
-            sigreg_loss = self.sigreg(info_dict["emb"].transpose(0, 1))
+            emb = info_dict["emb"]
+            # SIGReg expects (T, B, D) format
+            if emb.dim() == 2:  # (B, D)
+                emb = emb.unsqueeze(0)  # (1, B, D)
+            elif emb.dim() == 3 and emb.size(1) == 1:  # (B, 1, D)
+                emb = emb.transpose(0, 1)  # (1, B, D)
+            sigreg_loss = self.sigreg(emb)
             loss_dict["sigreg_loss"] = sigreg_loss
             loss_dict["loss"] = pred_loss.mean() + self.sigreg_weight * sigreg_loss
         else:

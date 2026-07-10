@@ -284,45 +284,17 @@ def train_hybrid_model(args, resume_preempt=False):
 
 
 if __name__ == "__main__":
-    # Example configuration
-    config = {
-        'meta': {
-            'model_name': 'hybrid_ijepa_lewm',
-            'use_bfloat16': True,
-        },
-        'data': {
-            'batch_size': 64,
-            'root_path': '/path/to/imagenet',
-            'image_folder': 'train',
-            'crop_size': 224,
-            'crop_scale': 0.08,
-            'use_gaussian_blur': True,
-            'use_horizontal_flip': True,
-            'use_color_distortion': True,
-            'color_jitter_strength': 0.5,
-            'pin_mem': True,
-            'num_workers': 4,
-        },
-        'mask': {
-            'patch_size': 16,
-            'num_enc_masks': 1,
-            'num_pred_masks': 4,
-            'enc_mask_scale': 0.4,
-            'pred_mask_scale': 0.6,
-            'aspect_ratio': 1.0,
-            'allow_overlap': False,
-            'min_keep': 16,
-        },
-        'optimization': {
-            'epochs': 100,
-            'lr': 1e-4,
-            'final_lr': 1e-5,
-            'weight_decay': 0.05,
-            'warmup': 1000,
-        },
-        'logging': {
-            'folder': './checkpoints/hybrid_training',
-        }
-    }
+    import argparse
+    import sys
+    sys.path.append('.')
     
-    main(config)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--config', type=str, default='configs/train/industrial_detection.yaml',
+                        help='Path to config file')
+    args = parser.parse_args()
+    
+    # Load config from file
+    with open(args.config, 'r') as f:
+        config = yaml.safe_load(f)
+    
+    train_hybrid_model(config)
