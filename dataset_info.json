@@ -1,0 +1,3179 @@
+{
+  "path": "/home/jovyan/UCAD/mvtec2d",
+  "categories": [
+    "locator_tube_connector",
+    "insulator",
+    "sleeve_loose",
+    "insulator_SAM",
+    "ear_croped",
+    "connector_sleeve",
+    "casing_base",
+    "locator_base",
+    "sleeve_loose_global",
+    "sleeve_double_ear_crack",
+    "base_back_croped1",
+    "screw_clamp"
+  ],
+  "summary": {
+    "locator_tube_connector": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "good": 3184,
+          "total": 3184
+        },
+        "test": {
+          "crack_ltc": 171,
+          "good": 347,
+          "total": 518
+        },
+        "ground_truth": {
+          "crack_ltc": 171,
+          "total": 171
+        }
+      }
+    },
+    "insulator": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "good": 2824,
+          "total": 2824
+        },
+        "test": {
+          "drop": 158,
+          "good": 246,
+          "total": 404
+        },
+        "ground_truth": {
+          "drop": 158,
+          "total": 158
+        }
+      }
+    },
+    "sleeve_loose": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "good": 3628,
+          "total": 3628
+        },
+        "test": {
+          "loose": 149,
+          "good": 388,
+          "total": 537
+        },
+        "ground_truth": {
+          "loose": 149,
+          "total": 149
+        }
+      }
+    },
+    "insulator_SAM": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "good": 1338,
+          "total": 1338
+        },
+        "test": {
+          "crack": 153,
+          "good": 1440,
+          "total": 1593
+        },
+        "ground_truth": {
+          "crack": 153,
+          "total": 153
+        }
+      }
+    },
+    "ear_croped": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "\u4e8c\u5206\u7c7bgood": 601,
+          "good": 1084,
+          "total": 1685
+        },
+        "test": {
+          "crack": 67,
+          "good": 1200,
+          "total": 1267
+        },
+        "ground_truth": {
+          "crack": 67,
+          "total": 67
+        }
+      }
+    },
+    "connector_sleeve": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "good": 2328,
+          "total": 2328
+        },
+        "test": {
+          "crack_cs": 206,
+          "good": 224,
+          "total": 430
+        },
+        "ground_truth": {
+          "crack_cs": 206,
+          "total": 206
+        }
+      }
+    },
+    "casing_base": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "good": 2388,
+          "total": 2388
+        },
+        "test": {
+          "crack_cb": 125,
+          "good": 301,
+          "total": 426
+        },
+        "ground_truth": {
+          "crack_cb": 125,
+          "total": 125
+        }
+      }
+    },
+    "locator_base": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "good": 2452,
+          "total": 2452
+        },
+        "test": {
+          "crack_lb": 147,
+          "good": 248,
+          "total": 395
+        },
+        "ground_truth": {
+          "crack_lb": 147,
+          "total": 147
+        }
+      }
+    },
+    "sleeve_loose_global": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "good": 3032,
+          "total": 3032
+        },
+        "test": {
+          "loose_sdr": 150,
+          "good": 502,
+          "total": 652
+        },
+        "ground_truth": {
+          "loose_sdr": 150,
+          "total": 150
+        }
+      }
+    },
+    "sleeve_double_ear_crack": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "good": 3032,
+          "total": 3032
+        },
+        "test": {
+          "crack_sdr": 279,
+          "good": 502,
+          "total": 781
+        },
+        "ground_truth": {
+          "crack_sdr": 279,
+          "total": 279
+        }
+      }
+    },
+    "base_back_croped1": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "good": 764,
+          "total": 764
+        },
+        "test": {
+          "crack": 67,
+          "good": 1200,
+          "total": 1267
+        },
+        "ground_truth": {
+          "crack": 67,
+          "total": 67
+        }
+      }
+    },
+    "screw_clamp": {
+      "total": 0,
+      "splits": {
+        "train": {
+          "good": 2994,
+          "total": 2994
+        },
+        "test": {
+          "missing": 136,
+          "good": 378,
+          "total": 514
+        },
+        "ground_truth": {
+          "missing": 136,
+          "total": 136
+        }
+      }
+    }
+  },
+  "images": [
+    {
+      "path": "locator_tube_connector/train/good/628.png",
+      "category": "locator_tube_connector",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/train/good/2017.png",
+      "category": "locator_tube_connector",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/train/good/1181.png",
+      "category": "locator_tube_connector",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/train/good/1693.png",
+      "category": "locator_tube_connector",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/train/good/1741.png",
+      "category": "locator_tube_connector",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/test/crack_ltc/156.png",
+      "category": "locator_tube_connector",
+      "split": "test",
+      "class": "crack_ltc",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/test/crack_ltc/127.png",
+      "category": "locator_tube_connector",
+      "split": "test",
+      "class": "crack_ltc",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/test/crack_ltc/160.png",
+      "category": "locator_tube_connector",
+      "split": "test",
+      "class": "crack_ltc",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/test/crack_ltc/132.png",
+      "category": "locator_tube_connector",
+      "split": "test",
+      "class": "crack_ltc",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/test/crack_ltc/146.png",
+      "category": "locator_tube_connector",
+      "split": "test",
+      "class": "crack_ltc",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/test/good/2994.png",
+      "category": "locator_tube_connector",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/test/good/3175.png",
+      "category": "locator_tube_connector",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/test/good/3154.png",
+      "category": "locator_tube_connector",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/test/good/3042.png",
+      "category": "locator_tube_connector",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/test/good/2859.png",
+      "category": "locator_tube_connector",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/ground_truth/crack_ltc/36_mask.png",
+      "category": "locator_tube_connector",
+      "split": "ground_truth",
+      "class": "crack_ltc",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/ground_truth/crack_ltc/40_mask.png",
+      "category": "locator_tube_connector",
+      "split": "ground_truth",
+      "class": "crack_ltc",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/ground_truth/crack_ltc/80_mask.png",
+      "category": "locator_tube_connector",
+      "split": "ground_truth",
+      "class": "crack_ltc",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/ground_truth/crack_ltc/13_mask.png",
+      "category": "locator_tube_connector",
+      "split": "ground_truth",
+      "class": "crack_ltc",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_tube_connector/ground_truth/crack_ltc/43_mask.png",
+      "category": "locator_tube_connector",
+      "split": "ground_truth",
+      "class": "crack_ltc",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/train/good/628.png",
+      "category": "insulator",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/train/good/2017.png",
+      "category": "insulator",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/train/good/1181.png",
+      "category": "insulator",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/train/good/1693.png",
+      "category": "insulator",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/train/good/1741.png",
+      "category": "insulator",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/test/drop/156.png",
+      "category": "insulator",
+      "split": "test",
+      "class": "drop",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/test/drop/127.png",
+      "category": "insulator",
+      "split": "test",
+      "class": "drop",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/test/drop/132.png",
+      "category": "insulator",
+      "split": "test",
+      "class": "drop",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/test/drop/146.png",
+      "category": "insulator",
+      "split": "test",
+      "class": "drop",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/test/drop/98.png",
+      "category": "insulator",
+      "split": "test",
+      "class": "drop",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/test/good/511.png",
+      "category": "insulator",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/test/good/445.png",
+      "category": "insulator",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/test/good/453.png",
+      "category": "insulator",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/test/good/282.png",
+      "category": "insulator",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/test/good/414.png",
+      "category": "insulator",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/ground_truth/drop/36_mask.png",
+      "category": "insulator",
+      "split": "ground_truth",
+      "class": "drop",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/ground_truth/drop/40_mask.png",
+      "category": "insulator",
+      "split": "ground_truth",
+      "class": "drop",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/ground_truth/drop/80_mask.png",
+      "category": "insulator",
+      "split": "ground_truth",
+      "class": "drop",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/ground_truth/drop/13_mask.png",
+      "category": "insulator",
+      "split": "ground_truth",
+      "class": "drop",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator/ground_truth/drop/43_mask.png",
+      "category": "insulator",
+      "split": "ground_truth",
+      "class": "drop",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/train/good/628.png",
+      "category": "sleeve_loose",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/train/good/2017.png",
+      "category": "sleeve_loose",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/train/good/1181.png",
+      "category": "sleeve_loose",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/train/good/1693.png",
+      "category": "sleeve_loose",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/train/good/1741.png",
+      "category": "sleeve_loose",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/test/loose/127.png",
+      "category": "sleeve_loose",
+      "split": "test",
+      "class": "loose",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/test/loose/132.png",
+      "category": "sleeve_loose",
+      "split": "test",
+      "class": "loose",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/test/loose/146.png",
+      "category": "sleeve_loose",
+      "split": "test",
+      "class": "loose",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/test/loose/98.png",
+      "category": "sleeve_loose",
+      "split": "test",
+      "class": "loose",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/test/loose/63.png",
+      "category": "sleeve_loose",
+      "split": "test",
+      "class": "loose",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/test/good/3739.png",
+      "category": "sleeve_loose",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/test/good/3925.png",
+      "category": "sleeve_loose",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/test/good/3815.png",
+      "category": "sleeve_loose",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/test/good/3974.png",
+      "category": "sleeve_loose",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/test/good/3905.png",
+      "category": "sleeve_loose",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/ground_truth/loose/36_mask.png",
+      "category": "sleeve_loose",
+      "split": "ground_truth",
+      "class": "loose",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/ground_truth/loose/40_mask.png",
+      "category": "sleeve_loose",
+      "split": "ground_truth",
+      "class": "loose",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/ground_truth/loose/80_mask.png",
+      "category": "sleeve_loose",
+      "split": "ground_truth",
+      "class": "loose",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/ground_truth/loose/13_mask.png",
+      "category": "sleeve_loose",
+      "split": "ground_truth",
+      "class": "loose",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose/ground_truth/loose/43_mask.png",
+      "category": "sleeve_loose",
+      "split": "ground_truth",
+      "class": "loose",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/train/good/162_7.png",
+      "category": "insulator_SAM",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/train/good/310_4.png",
+      "category": "insulator_SAM",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/train/good/85_8.png",
+      "category": "insulator_SAM",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/train/good/152_10.png",
+      "category": "insulator_SAM",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/train/good/333_2.png",
+      "category": "insulator_SAM",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/test/crack/121_10.png",
+      "category": "insulator_SAM",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/test/crack/51_3.png",
+      "category": "insulator_SAM",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/test/crack/390_9.png",
+      "category": "insulator_SAM",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/test/crack/170_6.png",
+      "category": "insulator_SAM",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/test/crack/294_10.png",
+      "category": "insulator_SAM",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/test/good/628.png",
+      "category": "insulator_SAM",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/test/good/1181.png",
+      "category": "insulator_SAM",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/test/good/511.png",
+      "category": "insulator_SAM",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/test/good/1218.png",
+      "category": "insulator_SAM",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/test/good/1341.png",
+      "category": "insulator_SAM",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/ground_truth/crack/144_2_mask.png",
+      "category": "insulator_SAM",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/ground_truth/crack/288_1_mask.png",
+      "category": "insulator_SAM",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/ground_truth/crack/255_9_mask.png",
+      "category": "insulator_SAM",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/ground_truth/crack/253_1_mask.png",
+      "category": "insulator_SAM",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "insulator_SAM/ground_truth/crack/145_6_mask.png",
+      "category": "insulator_SAM",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/train/\u4e8c\u5206\u7c7bgood/030431859_K1220959_T005_1_18_seg.png",
+      "category": "ear_croped",
+      "split": "train",
+      "class": "\u4e8c\u5206\u7c7bgood",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/train/\u4e8c\u5206\u7c7bgood/030134098_K1217475_279_3_12_seg.png",
+      "category": "ear_croped",
+      "split": "train",
+      "class": "\u4e8c\u5206\u7c7bgood",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/train/\u4e8c\u5206\u7c7bgood/025850253_K1214008_141_1_28_seg.png",
+      "category": "ear_croped",
+      "split": "train",
+      "class": "\u4e8c\u5206\u7c7bgood",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/train/\u4e8c\u5206\u7c7bgood/030103179_K1216818_253_1_22_seg.png",
+      "category": "ear_croped",
+      "split": "train",
+      "class": "\u4e8c\u5206\u7c7bgood",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/train/\u4e8c\u5206\u7c7bgood/025936506_K1214990_181_3_25_seg.png",
+      "category": "ear_croped",
+      "split": "train",
+      "class": "\u4e8c\u5206\u7c7bgood",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/train/good/030431859_K1220959_T005_1_18_seg.png",
+      "category": "ear_croped",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/train/good/030210743_K1218238_309_1_14_seg.png",
+      "category": "ear_croped",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/train/good/025945601_K1215178_189_1_14_seg.png",
+      "category": "ear_croped",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/train/good/030507895_K1221691_T017_1_10_seg.png",
+      "category": "ear_croped",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/train/good/025857023_K1214155_147_1_08_seg.png",
+      "category": "ear_croped",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/test/crack/back_crack_3_seg.png",
+      "category": "ear_croped",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/test/crack/back_crack_27_seg.png",
+      "category": "ear_croped",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/test/crack/front_crack_9_seg.png",
+      "category": "ear_croped",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/test/crack/front_crack_4_seg.png",
+      "category": "ear_croped",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/test/crack/front_crack_23_seg.png",
+      "category": "ear_croped",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/test/good/good-636-seg.png",
+      "category": "ear_croped",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/test/good/good-865-seg.png",
+      "category": "ear_croped",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/test/good/good-1108-seg.png",
+      "category": "ear_croped",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/test/good/good-778-seg.png",
+      "category": "ear_croped",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/test/good/good-628-seg.png",
+      "category": "ear_croped",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/ground_truth/crack/front_crack_32_seg_mask.png",
+      "category": "ear_croped",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/ground_truth/crack/front_crack_39_seg_mask.png",
+      "category": "ear_croped",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/ground_truth/crack/back_crack_24_seg_mask.png",
+      "category": "ear_croped",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/ground_truth/crack/back_crack_2_seg_mask.png",
+      "category": "ear_croped",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "ear_croped/ground_truth/crack/front_crack_8_seg_mask.png",
+      "category": "ear_croped",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/train/good/628.png",
+      "category": "connector_sleeve",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/train/good/2017.png",
+      "category": "connector_sleeve",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/train/good/1181.png",
+      "category": "connector_sleeve",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/train/good/1693.png",
+      "category": "connector_sleeve",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/train/good/1741.png",
+      "category": "connector_sleeve",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/test/crack_cs/156.png",
+      "category": "connector_sleeve",
+      "split": "test",
+      "class": "crack_cs",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/test/crack_cs/127.png",
+      "category": "connector_sleeve",
+      "split": "test",
+      "class": "crack_cs",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/test/crack_cs/160.png",
+      "category": "connector_sleeve",
+      "split": "test",
+      "class": "crack_cs",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/test/crack_cs/132.png",
+      "category": "connector_sleeve",
+      "split": "test",
+      "class": "crack_cs",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/test/crack_cs/183.png",
+      "category": "connector_sleeve",
+      "split": "test",
+      "class": "crack_cs",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/test/good/156.png",
+      "category": "connector_sleeve",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/test/good/160.png",
+      "category": "connector_sleeve",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/test/good/2246.png",
+      "category": "connector_sleeve",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/test/good/183.png",
+      "category": "connector_sleeve",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/test/good/2212.png",
+      "category": "connector_sleeve",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/ground_truth/crack_cs/172_mask.png",
+      "category": "connector_sleeve",
+      "split": "ground_truth",
+      "class": "crack_cs",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/ground_truth/crack_cs/36_mask.png",
+      "category": "connector_sleeve",
+      "split": "ground_truth",
+      "class": "crack_cs",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/ground_truth/crack_cs/40_mask.png",
+      "category": "connector_sleeve",
+      "split": "ground_truth",
+      "class": "crack_cs",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/ground_truth/crack_cs/80_mask.png",
+      "category": "connector_sleeve",
+      "split": "ground_truth",
+      "class": "crack_cs",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "connector_sleeve/ground_truth/crack_cs/13_mask.png",
+      "category": "connector_sleeve",
+      "split": "ground_truth",
+      "class": "crack_cs",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/train/good/628.png",
+      "category": "casing_base",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/train/good/2017.png",
+      "category": "casing_base",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/train/good/1181.png",
+      "category": "casing_base",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/train/good/1693.png",
+      "category": "casing_base",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/train/good/1741.png",
+      "category": "casing_base",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/test/crack_cb/98.png",
+      "category": "casing_base",
+      "split": "test",
+      "class": "crack_cb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/test/crack_cb/63.png",
+      "category": "casing_base",
+      "split": "test",
+      "class": "crack_cb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/test/crack_cb/57.png",
+      "category": "casing_base",
+      "split": "test",
+      "class": "crack_cb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/test/crack_cb/87.png",
+      "category": "casing_base",
+      "split": "test",
+      "class": "crack_cb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/test/crack_cb/11.png",
+      "category": "casing_base",
+      "split": "test",
+      "class": "crack_cb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/test/good/156.png",
+      "category": "casing_base",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/test/good/127.png",
+      "category": "casing_base",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/test/good/160.png",
+      "category": "casing_base",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/test/good/132.png",
+      "category": "casing_base",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/test/good/282.png",
+      "category": "casing_base",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/ground_truth/crack_cb/36_mask.png",
+      "category": "casing_base",
+      "split": "ground_truth",
+      "class": "crack_cb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/ground_truth/crack_cb/40_mask.png",
+      "category": "casing_base",
+      "split": "ground_truth",
+      "class": "crack_cb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/ground_truth/crack_cb/80_mask.png",
+      "category": "casing_base",
+      "split": "ground_truth",
+      "class": "crack_cb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/ground_truth/crack_cb/13_mask.png",
+      "category": "casing_base",
+      "split": "ground_truth",
+      "class": "crack_cb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "casing_base/ground_truth/crack_cb/43_mask.png",
+      "category": "casing_base",
+      "split": "ground_truth",
+      "class": "crack_cb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/train/good/628.png",
+      "category": "locator_base",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/train/good/2017.png",
+      "category": "locator_base",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/train/good/1181.png",
+      "category": "locator_base",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/train/good/1693.png",
+      "category": "locator_base",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/train/good/1741.png",
+      "category": "locator_base",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/test/crack_lb/127.png",
+      "category": "locator_base",
+      "split": "test",
+      "class": "crack_lb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/test/crack_lb/132.png",
+      "category": "locator_base",
+      "split": "test",
+      "class": "crack_lb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/test/crack_lb/146.png",
+      "category": "locator_base",
+      "split": "test",
+      "class": "crack_lb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/test/crack_lb/98.png",
+      "category": "locator_base",
+      "split": "test",
+      "class": "crack_lb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/test/crack_lb/63.png",
+      "category": "locator_base",
+      "split": "test",
+      "class": "crack_lb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/test/good/156.png",
+      "category": "locator_base",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/test/good/127.png",
+      "category": "locator_base",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/test/good/160.png",
+      "category": "locator_base",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/test/good/132.png",
+      "category": "locator_base",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/test/good/183.png",
+      "category": "locator_base",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/ground_truth/crack_lb/36_mask.png",
+      "category": "locator_base",
+      "split": "ground_truth",
+      "class": "crack_lb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/ground_truth/crack_lb/40_mask.png",
+      "category": "locator_base",
+      "split": "ground_truth",
+      "class": "crack_lb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/ground_truth/crack_lb/80_mask.png",
+      "category": "locator_base",
+      "split": "ground_truth",
+      "class": "crack_lb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/ground_truth/crack_lb/13_mask.png",
+      "category": "locator_base",
+      "split": "ground_truth",
+      "class": "crack_lb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "locator_base/ground_truth/crack_lb/43_mask.png",
+      "category": "locator_base",
+      "split": "ground_truth",
+      "class": "crack_lb",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/train/good/628.png",
+      "category": "sleeve_loose_global",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/train/good/2017.png",
+      "category": "sleeve_loose_global",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/train/good/1181.png",
+      "category": "sleeve_loose_global",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/train/good/1693.png",
+      "category": "sleeve_loose_global",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/train/good/1741.png",
+      "category": "sleeve_loose_global",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/test/loose_sdr/127.png",
+      "category": "sleeve_loose_global",
+      "split": "test",
+      "class": "loose_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/test/loose_sdr/132.png",
+      "category": "sleeve_loose_global",
+      "split": "test",
+      "class": "loose_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/test/loose_sdr/146.png",
+      "category": "sleeve_loose_global",
+      "split": "test",
+      "class": "loose_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/test/loose_sdr/98.png",
+      "category": "sleeve_loose_global",
+      "split": "test",
+      "class": "loose_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/test/loose_sdr/63.png",
+      "category": "sleeve_loose_global",
+      "split": "test",
+      "class": "loose_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/test/good/2994.png",
+      "category": "sleeve_loose_global",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/test/good/3175.png",
+      "category": "sleeve_loose_global",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/test/good/3154.png",
+      "category": "sleeve_loose_global",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/test/good/3042.png",
+      "category": "sleeve_loose_global",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/test/good/2859.png",
+      "category": "sleeve_loose_global",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/ground_truth/loose_sdr/36_mask.png",
+      "category": "sleeve_loose_global",
+      "split": "ground_truth",
+      "class": "loose_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/ground_truth/loose_sdr/40_mask.png",
+      "category": "sleeve_loose_global",
+      "split": "ground_truth",
+      "class": "loose_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/ground_truth/loose_sdr/80_mask.png",
+      "category": "sleeve_loose_global",
+      "split": "ground_truth",
+      "class": "loose_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/ground_truth/loose_sdr/13_mask.png",
+      "category": "sleeve_loose_global",
+      "split": "ground_truth",
+      "class": "loose_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_loose_global/ground_truth/loose_sdr/43_mask.png",
+      "category": "sleeve_loose_global",
+      "split": "ground_truth",
+      "class": "loose_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/train/good/628.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/train/good/2017.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/train/good/1181.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/train/good/1693.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/train/good/1741.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/test/crack_sdr/156.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "test",
+      "class": "crack_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/test/crack_sdr/127.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "test",
+      "class": "crack_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/test/crack_sdr/160.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "test",
+      "class": "crack_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/test/crack_sdr/132.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "test",
+      "class": "crack_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/test/crack_sdr/183.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "test",
+      "class": "crack_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/test/good/2994.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/test/good/3175.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/test/good/3154.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/test/good/3042.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/test/good/2859.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/ground_truth/crack_sdr/172_mask.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "ground_truth",
+      "class": "crack_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/ground_truth/crack_sdr/36_mask.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "ground_truth",
+      "class": "crack_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/ground_truth/crack_sdr/40_mask.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "ground_truth",
+      "class": "crack_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/ground_truth/crack_sdr/269_mask.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "ground_truth",
+      "class": "crack_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "sleeve_double_ear_crack/ground_truth/crack_sdr/80_mask.png",
+      "category": "sleeve_double_ear_crack",
+      "split": "ground_truth",
+      "class": "crack_sdr",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/train/good/030129294_K1217372_275_1_20_1_seg.png",
+      "category": "base_back_croped1",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/train/good/030223098_K1218484_319_1_21_1_seg.png",
+      "category": "base_back_croped1",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/train/good/030037221_K1216264_231_1_24_1_seg.png",
+      "category": "base_back_croped1",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/train/good/030105878_K1216874_255_1_20_1_seg.png",
+      "category": "base_back_croped1",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/train/good/025831127_K1213606_123_1_27_1_seg.png",
+      "category": "base_back_croped1",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/test/crack/crack-63-seg.png",
+      "category": "base_back_croped1",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/test/crack/crack-24-seg.png",
+      "category": "base_back_croped1",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/test/crack/crack-21-seg.png",
+      "category": "base_back_croped1",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/test/crack/crack-60-seg.png",
+      "category": "base_back_croped1",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/test/crack/crack-23-seg.png",
+      "category": "base_back_croped1",
+      "split": "test",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/test/good/good-636-seg.png",
+      "category": "base_back_croped1",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/test/good/good-865-seg.png",
+      "category": "base_back_croped1",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/test/good/good-1108-seg.png",
+      "category": "base_back_croped1",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/test/good/good-778-seg.png",
+      "category": "base_back_croped1",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/test/good/good-628-seg.png",
+      "category": "base_back_croped1",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGB",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/ground_truth/crack/crack-41-seg_mask.png",
+      "category": "base_back_croped1",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/ground_truth/crack/crack-46-seg_mask.png",
+      "category": "base_back_croped1",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/ground_truth/crack/crack-29-seg_mask.png",
+      "category": "base_back_croped1",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/ground_truth/crack/crack-63-seg_mask.png",
+      "category": "base_back_croped1",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "base_back_croped1/ground_truth/crack/crack-7-seg_mask.png",
+      "category": "base_back_croped1",
+      "split": "ground_truth",
+      "class": "crack",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/train/good/628.png",
+      "category": "screw_clamp",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/train/good/2017.png",
+      "category": "screw_clamp",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/train/good/1181.png",
+      "category": "screw_clamp",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/train/good/1693.png",
+      "category": "screw_clamp",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/train/good/1741.png",
+      "category": "screw_clamp",
+      "split": "train",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/test/missing/127.png",
+      "category": "screw_clamp",
+      "split": "test",
+      "class": "missing",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/test/missing/132.png",
+      "category": "screw_clamp",
+      "split": "test",
+      "class": "missing",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/test/missing/98.png",
+      "category": "screw_clamp",
+      "split": "test",
+      "class": "missing",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/test/missing/63.png",
+      "category": "screw_clamp",
+      "split": "test",
+      "class": "missing",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/test/missing/57.png",
+      "category": "screw_clamp",
+      "split": "test",
+      "class": "missing",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/test/good/156.png",
+      "category": "screw_clamp",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/test/good/127.png",
+      "category": "screw_clamp",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/test/good/160.png",
+      "category": "screw_clamp",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/test/good/132.png",
+      "category": "screw_clamp",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/test/good/282.png",
+      "category": "screw_clamp",
+      "split": "test",
+      "class": "good",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "RGBA",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/ground_truth/missing/36_mask.png",
+      "category": "screw_clamp",
+      "split": "ground_truth",
+      "class": "missing",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/ground_truth/missing/40_mask.png",
+      "category": "screw_clamp",
+      "split": "ground_truth",
+      "class": "missing",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/ground_truth/missing/80_mask.png",
+      "category": "screw_clamp",
+      "split": "ground_truth",
+      "class": "missing",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/ground_truth/missing/13_mask.png",
+      "category": "screw_clamp",
+      "split": "ground_truth",
+      "class": "missing",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    },
+    {
+      "path": "screw_clamp/ground_truth/missing/43_mask.png",
+      "category": "screw_clamp",
+      "split": "ground_truth",
+      "class": "missing",
+      "size": [
+        224,
+        224
+      ],
+      "mode": "L",
+      "format": "PNG"
+    }
+  ],
+  "total_images": 40241
+}
