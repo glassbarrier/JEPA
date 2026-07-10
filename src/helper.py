@@ -9,8 +9,8 @@ import logging
 import sys
 
 import torch
+from .models import vision_transformer as vit
 
-import models.vision_transformer as vit
 from utils.schedulers import (
     WarmupCosineSchedule,
     CosineWDSchedule)
