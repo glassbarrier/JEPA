@@ -279,21 +279,14 @@ class HybridJEPA(nn.Module):
         
         return info
 
-    def predict(self, emb, act_emb=None):
-        """Predict next state embedding"""
-        if act_emb is not None:
-            # LeWM-style prediction with actions
-            preds = self.predictor(emb, act_emb)
-        else:
-            # IJEPA-style prediction without actions
-            preds = self.predictor(emb)
-        
-        # For single image processing, handle shape accordingly
-        if preds.dim() == 3:  # (B, T, D)
-            preds = self.pred_proj(preds)
-        else:  # (B, D)
-            preds = self.pred_proj(preds).unsqueeze(1)
-        
+    def predict(self, context, masks_enc, masks_pred):
+        """IJEPA-style masked prediction of target (masked) tokens.
+
+        context: encoder output of visible patches, shape (B*nenc, N_ctx, D)
+        masks_enc / masks_pred: mask index tensors consumed by the IJEPA predictor
+        Returns predictions for the masked target tokens, shape (B*nenc*npred, N_pred, D)
+        """
+        preds = self.predictor(context, masks_enc, masks_pred)
         return preds
 
     def rollout(self, info, action_sequence=None, history_size: int = None):
@@ -335,7 +328,8 @@ class HybridJEPA(nn.Module):
                 act_emb = self.action_encoder(act)
                 ctx_emb = emb[:, -history_size:]
                 act_trunc = act_emb[:, -history_size:]
-                pred_emb = self.predict(ctx_emb, act_trunc)[:, -1:]
+                # NOTE: rollout is unused for the static IJEPA setting (no temporal actions).
+                pred_emb = self.predict(ctx_emb, None, None)[:, -1:]
                 emb = torch.cat([emb, pred_emb], dim=1)
                 
                 next_act = act_future[:, t : t + 1, :]
@@ -343,7 +337,8 @@ class HybridJEPA(nn.Module):
             else:
                 # No action, use last history
                 ctx_emb = emb[:, -history_size:]
-                pred_emb = self.predict(ctx_emb)[:, -1:]
+                # NOTE: rollout is unused for the static IJEPA setting (no temporal actions).
+                pred_emb = self.predict(ctx_emb, None, None)[:, -1:]
                 emb = torch.cat([emb, pred_emb], dim=1)
         
         # Unflatten dimensions
@@ -394,21 +389,22 @@ class HybridJEPA(nn.Module):
         
         return loss_dict
 
-    def forward(self, x, masks=None, actions=None, **kwargs):
+    def forward(self, x, masks=None, masks_enc=None, masks_pred=None, actions=None, **kwargs):
         """Forward pass with flexible architecture selection"""
         # Encode
         info = {'pixels': x}
         if actions is not None:
             info['action'] = actions
-        
+
         info = self.encode(info)
-        
-        # Predict
-        if actions is not None:
-            pred = self.predict(info["emb"], info.get("act_emb"))
+
+        # Predict (IJEPA-style masked prediction when masks are provided)
+        if masks_enc is not None and masks_pred is not None:
+            context = self.encoder(x, masks_enc)
+            pred = self.predict(context, masks_enc, masks_pred)
         else:
-            pred = self.predict(info["emb"])
-        
+            pred = None
+
         return {"pred": pred, "emb": info["emb"]}
 
 

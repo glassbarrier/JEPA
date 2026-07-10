@@ -38,18 +38,18 @@ def init_hybrid_model(args):
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     
     # Initialize encoder (IJEPA style)
-    from src.models.vision_transformer import vit_tiny
+    from src.models.vision_transformer import vit_tiny, vit_predictor
     encoder = vit_tiny(patch_size=16, embed_dim=192)
     
-    # Initialize hybrid predictor
-    predictor = HybridPredictor(
+    # Initialize IJEPA-style mask predictor (aligned with the masked teacher targets).
+    # This predicts the dropped (target) patch tokens from the visible context tokens.
+    predictor = vit_predictor(
+        num_patches=encoder.patch_embed.num_patches,
         embed_dim=192,
-        pred_dim=192,
+        predictor_embed_dim=192,
         depth=6,
-        heads=16,
-        dim_head=64,
-        mlp_dim=2048,
-        dropout=0.1
+        num_heads=12,
+        mlp_ratio=4,
     )
     
     # Initialize action encoder (optional)
@@ -95,25 +95,29 @@ def hybrid_train_step(model, batch, masks_enc, masks_pred, optimizer, scaler, de
     
     # Forward pass
     with autocast(dtype=torch.bfloat16, enabled=bfloat16):
-        # Encode using CLS token (LeWM style)
-        info = {'pixels': imgs}
-        info = model.encode(info, use_cls_token=True)
-        
-        # Create targets using masked encoder features
+        # --- Teacher targets (no grad): masked regions of normalized encoder features ---
         with torch.no_grad():
             h = model.encoder(imgs)
             h = F.layer_norm(h, (h.size(-1),))
             B = len(h)
             h = apply_masks(h, masks_2)
             h = repeat_interleave_batch(h, B, repeat=len(masks_1))
-            info['goal_emb'] = h
-        
-        # Predict
-        pred = model.predict(info['emb'])
-        info['predicted_emb'] = pred
-        
+            goal_emb = h  # (B*nenc*npred, N_pred, D)
+
+        # --- Context + IJEPA mask predictor ---
+        context = model.encoder(imgs, masks_1)                    # (B*nenc, N_ctx, D)
+        predicted_emb = model.predict(context, masks_1, masks_2)  # (B*nenc*npred, N_pred, D)
+
+        # --- CLS embedding for SIGReg (LeWM-style contribution) ---
+        emb_info = model.encode({'pixels': imgs}, use_cls_token=True)
+        emb = emb_info['emb']  # (B, 1, D)
+
         # Compute hybrid loss
-        loss_dict = model.criterion(info)
+        loss_dict = model.criterion({
+            'predicted_emb': predicted_emb,
+            'goal_emb': goal_emb,
+            'emb': emb,
+        })
         loss = loss_dict['loss']
     
     # Backward pass
