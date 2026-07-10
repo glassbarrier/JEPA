@@ -11,10 +11,10 @@ import sys
 import torch
 from .models import vision_transformer as vit
 
-from utils.schedulers import (
+from src.utils.schedulers import (
     WarmupCosineSchedule,
     CosineWDSchedule)
-from utils.tensors import trunc_normal_
+from src.utils.tensors import trunc_normal_
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logger = logging.getLogger()

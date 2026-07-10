@@ -11,7 +11,7 @@ import time
 from tqdm import tqdm
 
 from hybrid_jepa import HybridJEPA, HybridPredictor, SIGReg, ActionEncoder
-from models.vision_transformer import vit_tiny, vit_small, vit_base
+from src.models.vision_transformer import vit_tiny, vit_small, vit_base
 from gradient_checkpointing import create_memory_efficient_model
 from training_stability import TrainingStabilityAnalyzer
 
@@ -42,7 +42,7 @@ class AblationModel(nn.Module):
     
     def _create_original_ijepa(self, config: Dict) -> nn.Module:
         """Create original IJEPA model"""
-        from models.vision_transformer import vit_base, vit_predictor
+        from src.models.vision_transformer import vit_base, vit_predictor
         
         encoder = vit_base(patch_size=16, embed_dim=768)
         predictor = vit_predictor(

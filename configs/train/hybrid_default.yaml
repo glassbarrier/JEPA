@@ -14,7 +14,7 @@ meta:
 # Data parameters
 data:
   batch_size: 64      # Reduced for single GPU
-  root_path: "/path/to/imagenet"
+  root_path: "~/UCAD/mvtec2d"
   image_folder: "train"
   crop_size: 224
   crop_scale: 0.08

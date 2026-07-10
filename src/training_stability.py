@@ -1,3 +1,5 @@
+from typing import Any, Dict
+from typing import Any, Dict
 """Training Stability Optimization for Hybrid IJEPA-LeWM"""
 
 import torch
@@ -5,12 +7,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 import matplotlib.pyplot as plt
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, Any, List, Tuple, Optional
 from collections import deque
 import logging
 
 from hybrid_jepa import HybridJEPA, HybridPredictor, SIGReg
-from models.vision_transformer import vit_tiny
+from src.models.vision_transformer import vit_tiny
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)

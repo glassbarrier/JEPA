@@ -335,7 +335,7 @@ def main():
     
     # Import and create base model
     from hybrid_jepa import HybridJEPA, HybridPredictor, ActionEncoder
-    from models.vision_transformer import vit_tiny
+    from src.models.vision_transformer import vit_tiny
     
     # Create base model
     encoder = vit_tiny(patch_size=16, embed_dim=192)

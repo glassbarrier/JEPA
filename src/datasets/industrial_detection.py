@@ -185,7 +185,8 @@ class MultiCategoryJEPADataLoader:
             shuffle=(split == 'train'),
             num_workers=num_workers,
             pin_memory=pin_memory,
-            drop_last=(split == 'train')
+            drop_last=(split == 'train'),
+            collate_fn=collator
         )
         
         # Get mask collator for JEPA
@@ -369,6 +370,7 @@ if __name__ == "__main__":
     # Create data loader
     print("\nCreating data loader...")
     data_loader = MultiCategoryJEPADataLoader(
+        collate_fn=collator,
         root_dir=root_dir,
         categories=None,  # Use all categories
         batch_size=16,
@@ -389,3 +391,56 @@ if __name__ == "__main__":
     print(f"Batch shape: {images.shape}")
     print(f"Labels shape: {labels.shape}")
     print(f"Labels: {labels}")
+
+def make_industrial_detection_dataset(
+    transform=None,
+    batch_size=16,
+    collator=None,
+    pin_mem=True,
+    training=True,
+    num_workers=4,
+    root_path=None,
+    image_folder=None,
+    drop_last=False
+):
+    """
+    创建工业检测数据集的数据加载器
+    自动将 RGBA 图片转换为 RGB
+    """
+    from torch.utils.data import DataLoader, Dataset
+    from torchvision.datasets import ImageFolder
+    from PIL import Image
+    import os
+    
+    # 确定数据路径
+    data_path = image_folder or root_path or './data'
+    
+    if training:
+        train_path = os.path.join(data_path, 'train')
+        if os.path.exists(train_path):
+            data_path = train_path
+    
+    # 自定义 Dataset，转换 RGBA 为 RGB
+    class RGBImageFolder(ImageFolder):
+        def __getitem__(self, index):
+            path, target = self.samples[index]
+            # 关键：强制转 RGB，丢弃 Alpha 通道
+            image = Image.open(path).convert('RGB')
+            if self.transform is not None:
+                image = self.transform(image)
+            return image, target
+    
+    dataset = RGBImageFolder(root=data_path, transform=transform)
+    
+    loader = DataLoader(
+        dataset,
+        batch_size=batch_size,
+        shuffle=training,
+        num_workers=num_workers,
+        pin_memory=pin_mem,
+        drop_last=drop_last,
+        collate_fn=collator
+    )
+    
+    return loader, loader, loader
+  # 返回 train, val, test (都用同一个)

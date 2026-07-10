@@ -117,5 +117,7 @@ ijepa/
 config/
 data/
 evaluation/
-models/
+/models/
 training/
+
+# 但保留 src/models/（代码目录）

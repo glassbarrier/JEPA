@@ -16,8 +16,8 @@ import time
 import json
 from tqdm import tqdm
 
-from hybrid_jepa import HybridJEPA, HybridPredictor
-from models.vision_transformer import vit_tiny
+from src.hybrid_jepa import HybridJEPA, HybridPredictor
+from src.models.vision_transformer import vit_tiny
 from transforms import make_transforms
 
 
@@ -353,7 +353,7 @@ def create_test_models() -> Dict[str, nn.Module]:
     models = {}
     
     # Original IJEPA-style model
-    from models.vision_transformer import vit_base
+    from src.models.vision_transformer import vit_base
     encoder = vit_base(patch_size=16, embed_dim=768)
     predictor = HybridPredictor(
         embed_dim=768,

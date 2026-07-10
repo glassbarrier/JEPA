@@ -31,16 +31,16 @@ from torch.nn.parallel import DistributedDataParallel
 
 from masks.multiblock import MaskCollator as MBMaskCollator
 from masks.utils import apply_masks
-from utils.distributed import (
+from src.utils.distributed import (
     init_distributed,
     AllReduce
 )
-from utils.logging import (
+from src.utils.logging import (
     CSVLogger,
     gpu_timer,
     grad_logger,
     AverageMeter)
-from utils.tensors import repeat_interleave_batch
+from src.utils.tensors import repeat_interleave_batch
 from datasets.imagenet1k import make_imagenet1k
 
 from helper import (

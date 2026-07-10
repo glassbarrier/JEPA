@@ -6,8 +6,8 @@ import torch.nn.functional as F
 from einops import rearrange
 from typing import Optional, Dict, Any
 
-from .models.vision_transformer import VisionTransformer, VisionTransformerPredictor
-from ..utils.tensors import trunc_normal_
+from src.models.vision_transformer import VisionTransformer, VisionTransformerPredictor
+from src.utils.tensors import trunc_normal_
 
 
 def detach_clone(v):
@@ -136,7 +136,7 @@ class HybridPredictor(nn.Module):
     
     def _build_transformer(self, depth, heads, dim_head, mlp_dim, dropout, use_conditional):
         """Build transformer with or without conditional blocks"""
-        from ..models.vision_transformer import Block
+        from src.models.vision_transformer import Block
         
         blocks = nn.ModuleList()
         for _ in range(depth):
@@ -399,11 +399,11 @@ class ConditionalBlock(nn.Module):
         nn.init.constant_(self.adaLN_modulation[-1].bias, 0)
     
     def _create_attention(self, dim, heads, dim_head, dropout):
-        from ..models.vision_transformer import Attention
+        from src.models.vision_transformer import Attention
         return Attention(dim, heads=heads, dim_head=dim_head, dropout=dropout)
     
     def _create_mlp(self, dim, mlp_dim, dropout):
-        from ..models.vision_transformer import MLP
+        from src.models.vision_transformer import MLP
         return MLP(in_features=dim, hidden_features=mlp_dim, drop=dropout)
     
     def forward(self, x, c):

@@ -12,11 +12,11 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-from utils.tensors import (
+from src.utils.tensors import (
     trunc_normal_,
     repeat_interleave_batch
 )
-from masks.utils import apply_masks
+from src.masks.utils import apply_masks
 
 
 def get_2d_sincos_pos_embed(embed_dim, grid_size, cls_token=False):
@@ -449,8 +449,9 @@ def vit_predictor(**kwargs):
 
 
 def vit_tiny(patch_size=16, **kwargs):
+    embed_dim = kwargs.pop('embed_dim', 192)
     model = VisionTransformer(
-        patch_size=patch_size, embed_dim=192, depth=12, num_heads=3, mlp_ratio=4,
+        patch_size=patch_size, embed_dim=embed_dim, depth=12, num_heads=3, mlp_ratio=4,
         qkv_bias=True, norm_layer=partial(nn.LayerNorm, eps=1e-6), **kwargs)
     return model
 

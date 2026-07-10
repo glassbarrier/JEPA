@@ -13,7 +13,7 @@ from torch.cuda.amp import autocast, GradScaler
 
 from src.helper import load_checkpoint, init_model, init_opt
 from src.transforms import make_transforms
-from src.datasets.imagenet1k import make_imagenet1k
+from src.datasets.industrial_detection import make_industrial_detection_dataset
 from src.masks.multiblock import MaskCollator as MBMaskCollator
 from src.masks.utils import apply_masks
 from src.utils.tensors import repeat_interleave_batch
@@ -38,7 +38,7 @@ def init_hybrid_model(args):
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     
     # Initialize encoder (IJEPA style)
-    from models.vision_transformer import vit_tiny
+    from src.models.vision_transformer import vit_tiny
     encoder = vit_tiny(patch_size=16, embed_dim=192)
     
     # Initialize hybrid predictor
@@ -134,7 +134,7 @@ def hybrid_train_step(model, batch, masks_enc, masks_pred, optimizer, scaler, de
     return loss_dict
 
 
-def main(args, resume_preempt=False):
+def train_hybrid_model(args, resume_preempt=False):
     """Main training loop"""
     # Device setup
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -182,7 +182,7 @@ def main(args, resume_preempt=False):
     mask_collator = create_hybrid_collator(args)
     
     # Data loader
-    _, unsupervised_loader, _ = make_imagenet1k(
+    unsupervised_loader, _, _ = make_industrial_detection_dataset(
         transform=transform,
         batch_size=batch_size,
         collator=mask_collator,
