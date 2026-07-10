@@ -49,7 +49,7 @@ Thumbs.db
 # Data files (large datasets)
 data/
 dataset/
-datasets/
+# datasets/
 *.h5
 *.hdf5
 *.npz
