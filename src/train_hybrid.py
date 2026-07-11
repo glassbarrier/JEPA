@@ -49,7 +49,7 @@ def init_hybrid_model(args):
         predictor_embed_dim=192,
         depth=6,
         num_heads=12,
-        mlp_ratio=4,
+        # mlp_ratio=4,
     )
     
     # Initialize action encoder (optional)

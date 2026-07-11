@@ -8,7 +8,7 @@ data:
   image_folder: /home/jovyan/UCAD/mvtec2d
   num_workers: 4
   pin_mem: true
-  root_path: /home/jovyan/UCAD/mvtec2d
+  root_path: ./data
   use_color_distortion: true
   use_gaussian_blur: true
   use_horizontal_flip: true
@@ -49,15 +49,9 @@ logging:
   folder: ./checkpoints/industrial_detection
 mask:
   allow_overlap: false
-  # aspect_ratio:
-  # - 0.3
-  # - 3.0
   aspect_ratio:
   - 0.5
   - 2.0
-  # enc_mask_scale:
-  # - 0.2
-  # - 0.6
   enc_mask_scale:
   - 0.1
   - 0.4
@@ -65,9 +59,6 @@ mask:
   num_enc_masks: 1
   num_pred_masks: 4
   patch_size: 16
-  # pred_mask_scale:
-  # - 0.4
-  # - 0.8
   pred_mask_scale:
   - 0.3
   - 0.6

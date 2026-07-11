@@ -101,7 +101,8 @@ class MaskCollator(object):
                 if timeout == 0:
                     tries += 1
                     timeout = og_timeout
-                    logger.warning(f'Mask generator says: "Valid mask not found, decreasing acceptable-regions [{tries}]"')
+                    # logger.warning(f'Mask generator says: "Valid mask not found, decreasing acceptable-regions [{tries}]"')
+                    logger.debug(f'Mask generator says: "Valid mask not found, decreasing acceptable-regions [{tries}]"')
         mask = mask.squeeze()
         # --
         mask_complement = torch.ones((self.height, self.width), dtype=torch.int32)
