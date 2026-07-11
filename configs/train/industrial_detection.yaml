@@ -36,7 +36,7 @@ dataset_info:
   - crack_lb
   - loose_sdr
   - crack_sdr
-  - missingcat >> configs/train/industrial_detection.yaml << 'EOF'
+  - missing
   num_classes: 20
   total_categories: 12
   total_samples: 5000
@@ -94,6 +94,7 @@ optimizer:
 output:
   log_dir: ./logs
   save_dir: ./checkpoints
+  checkpoint_dir: ./model_weights/industrial_detection
   tensorboard: true
 sigreg:
   sigreg_momentum: 0.995

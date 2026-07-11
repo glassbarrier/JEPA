@@ -105,7 +105,7 @@ def train_model(args):
 
 
 def evaluate_model(args):
-    """Evaluate the trained model"""
+    """Evaluate the trained model via downstream probe (linear/kNN/AUROC)"""
     logger.info(f"Evaluating model: {args.model_path}")
     
     try:
@@ -113,25 +113,23 @@ def evaluate_model(args):
             logger.error("Model path not provided or doesn't exist")
             return False
         
-        # Create evaluator
-        device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        evaluator = DownstreamEvaluator(device)
+        from scripts.eval_downstream import run_downstream_eval
         
-        # Load model
-        logger.info("Loading model...")
-        checkpoint = torch.load(args.model_path, map_location=device)
+        # data_root 优先用参数，否则回退到配置里的 data.root_path
+        data_root = getattr(args, "data", None)
+        summary = run_downstream_eval(
+            checkpoint_path=args.model_path,
+            data_root=data_root,
+            config_path=args.config if hasattr(args, "config") else None,
+            batch_size=getattr(args, "batch_size", 32),
+        )
         
-        # Create model from checkpoint
-        # (This depends on your specific model architecture)
-        # model = create_model_from_checkpoint(checkpoint)
-        # model.load_state_dict(checkpoint['model_state_dict'])
-        
-        # Evaluate
-        logger.info("Evaluating model...")
-        # results = evaluator.comprehensive_evaluation(model, dataset_name)
-        
-        logger.info("Evaluation completed!")
-        return True
+        if summary:
+            logger.info("Evaluation completed!")
+            return True
+        else:
+            logger.error("Evaluation produced no results")
+            return False
         
     except Exception as e:
         logger.error(f"Evaluation failed: {str(e)}")

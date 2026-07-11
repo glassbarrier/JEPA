@@ -144,8 +144,28 @@ def train_hybrid_model(args, resume_preempt=False):
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     torch.cuda.set_device(device)
     
-    # Create output directory
+    # Create output directories.
+    # Text artifacts (config dump, CSV log) go to logging.folder;
+    # large model weights (.pth) go to a SEPARATE checkpoint_dir so the
+    # log folder stays small and easy to browse on the server.
     os.makedirs(args['logging']['folder'], exist_ok=True)
+    # 权重存到完全独立的顶层目录(默认 ./model_weights/<run名>)，
+    # 不放在 logging.folder 内，避免大文件导致该目录在服务器上打不开。
+    run_name = os.path.basename(os.path.normpath(args['logging']['folder']))
+    ckpt_dir = (
+        args.get('checkpoint_dir')
+        or args.get('output', {}).get('checkpoint_dir')
+        or os.path.join('model_weights', run_name)
+    )
+    os.makedirs(ckpt_dir, exist_ok=True)
+    logger.info(f'Checkpoints will be saved to: {ckpt_dir}')
+
+    # Checkpoint frequency: prefer config 'training.save_every', else keep default.
+    checkpoint_freq = (
+        args.get('checkpoint_freq')
+        or args.get('training', {}).get('save_every')
+        or checkpoint_freq
+    )
     
     # Save config
     dump_path = os.path.join(args['logging']['folder'], 'hybrid-params.yaml')
@@ -264,19 +284,21 @@ def train_hybrid_model(args, resume_preempt=False):
                     etime
                 )
         
-        # Save checkpoint
+        # Save checkpoint to the dedicated weights directory (separate from logs/config).
         if (epoch + 1) % checkpoint_freq == 0:
-            save_path = os.path.join(
-                args['logging']['folder'],
-                f'hybrid-epoch-{epoch + 1}.pth'
-            )
-            torch.save({
+            ckpt_state = {
                 'epoch': epoch + 1,
                 'model_state_dict': model.state_dict(),
                 'optimizer_state_dict': optimizer.state_dict(),
                 'loss': loss_meter.avg,
-            }, save_path)
+            }
+            save_path = os.path.join(ckpt_dir, f'hybrid-epoch-{epoch + 1}.pth')
+            torch.save(ckpt_state, save_path)
             logger.info(f'Checkpoint saved to {save_path}')
+            # Keep a 'latest' copy for easy evaluation / resume.
+            latest_path = os.path.join(ckpt_dir, 'hybrid-latest.pth')
+            torch.save(ckpt_state, latest_path)
+            logger.info(f'Latest checkpoint updated at {latest_path}')
         
         # Epoch summary
         logger.info(

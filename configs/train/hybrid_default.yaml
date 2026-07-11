@@ -51,3 +51,7 @@ optimization:
 logging:
   folder: "./checkpoints/hybrid_training"
   write_tag: "hybrid"
+
+# Model weights are stored in a SEPARATE top-level directory (./model_weights/...)
+# so the run output folder (logs/config) stays small and opens instantly on the server.
+checkpoint_dir: ./model_weights/hybrid_training
